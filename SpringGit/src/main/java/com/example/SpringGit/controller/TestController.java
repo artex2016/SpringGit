@@ -1,4 +1,4 @@
-package come.example.controller;
+package com.example.SpringGit.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,7 @@ public class TestController {
 	// primo endpoint
 	@GetMapping(value="/test")
 	public String getTestQualunque() {
-		
+		System.out.println("Controller /api/test");
 		return "\"Sono il webService!\"";
 	}
 	
