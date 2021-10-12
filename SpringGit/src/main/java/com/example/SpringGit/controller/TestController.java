@@ -1,4 +1,4 @@
-package come.example.controller;
+package com.example.SpringGit.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
