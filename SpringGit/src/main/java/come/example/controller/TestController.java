@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+//Commento inutile prova ric 2
 // indichiamo che la classe è un controller eche non facciamo uso di template engine
 @RestController
 
