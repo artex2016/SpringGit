@@ -1,5 +1,9 @@
 package com.example.SpringGit.repository;
 
-public interface DettaglioOrdineRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.SpringGit.entity.DettaglioOrdine;
+
+public interface DettaglioOrdineRepository extends JpaRepository<DettaglioOrdine,Integer>{
 
 }
