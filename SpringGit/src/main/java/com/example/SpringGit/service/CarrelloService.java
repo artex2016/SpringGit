@@ -32,4 +32,12 @@ public class CarrelloService {
 		}
 		return listaCarrelli;
 	}
+	
+	public List<Carrello> findByArticolo(Articolo articolo) throws Exception{
+		List<Carrello> listaCarrelli = rep.findByArticolo(articolo);
+		if(listaCarrelli == null || listaCarrelli.isEmpty()) {
+			throw new Exception("BAD - Nessun carrello per questo utente.");
+		}
+		return listaCarrelli;
+	}
 }

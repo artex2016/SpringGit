@@ -15,6 +15,6 @@ public interface CarrelloRepository extends JpaRepository<Articolo, Integer> {
 	
 	public Optional<Carrello> findById(int id);
 	public List<Carrello> findByUtente(Utente utente);
-	public List<Carrello> findByUArticolo(Articolo articolo);
+	public List<Carrello> findByArticolo(Articolo articolo);
 
 }
