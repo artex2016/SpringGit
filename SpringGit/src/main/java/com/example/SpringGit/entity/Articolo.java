@@ -1,14 +1,18 @@
 package com.example.SpringGit.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name = "articoli")
+@Table(name = "articolo")
 public class Articolo {
 
 	
@@ -24,8 +28,11 @@ public class Articolo {
 	private double prezzo;
 	@Column(name = "IVA")
 	private double iva;
+
 	
-	
+	public Articolo() {
+		super();
+	}
 	
 	
 	public int getId() {
