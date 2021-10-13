@@ -1,6 +1,7 @@
 package com.example.SpringGit.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +29,11 @@ public class Articolo {
 	private double prezzo;
 	@Column(name = "IVA")
 	private double iva;
-
+	@OneToMany(mappedBy = "articolo")
+	private Set<Carrello> carrello;
+	
+	
+	
 	
 	public Articolo() {
 		super();

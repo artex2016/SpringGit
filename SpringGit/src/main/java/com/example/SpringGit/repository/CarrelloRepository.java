@@ -11,7 +11,7 @@ import com.example.SpringGit.entity.Carrello;
 import com.example.SpringGit.entity.Utente;
 
 @Repository
-public interface CarrelloRepository extends JpaRepository<Articolo, Integer> {
+public interface CarrelloRepository extends JpaRepository<Carrello, Integer> {
 	
 	public Optional<Carrello> findById(int id);
 	public List<Carrello> findByUtente(Utente utente);

@@ -1,6 +1,8 @@
 package com.example.SpringGit.entity;
 
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,6 +45,8 @@ public class Utente {
 	@Column(name = "PASSWORD")
 	private String password;
 	
+	@OneToMany(mappedBy = "utente")
+	private Set<Carrello> carrello;
 	
 	public Utente() {
 		super();

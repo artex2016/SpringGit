@@ -7,20 +7,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "carrello")
 public class Carrello {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne(targetEntity=Utente.class)
-	@JoinColumn(name="id_utente", table="utente", referencedColumnName="id")
+	@ManyToOne
+	@JoinColumn(name="id_utente")
 	private Utente utente;
 	
-	@ManyToOne(targetEntity=Articolo.class)
-	@JoinColumn(name="id_articolo", table="articolo", referencedColumnName="id")
+	@ManyToOne
+	@JoinColumn(name="id_articolo")
 	private Articolo articolo;
 	
 	private int qta;

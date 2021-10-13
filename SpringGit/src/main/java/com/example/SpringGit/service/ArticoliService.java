@@ -4,17 +4,16 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.SpringGit.entity.Articolo;
 import com.example.SpringGit.repository.ArticoliRepository;
 
 
-
+@Service
 public class ArticoliService {
 	@Autowired 
 	private ArticoliRepository ar;
-	
-	
 	
 	
 	
