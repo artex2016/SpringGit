@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Carrello {
@@ -13,10 +15,12 @@ public class Carrello {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="id_utente")
+	@ManyToOne(targetEntity=Utente.class)
+	@JoinColumn(name="id_utente", table="utente", referencedColumnName="id")
 	private Utente utente;
 	
-	@Column(name="id_articolo")
+	@ManyToOne(targetEntity=Articolo.class)
+	@JoinColumn(name="id_articolo", table="articolo", referencedColumnName="id")
 	private Articolo articolo;
 	
 	private int qta;
