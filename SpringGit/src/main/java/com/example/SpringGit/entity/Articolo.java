@@ -1,5 +1,6 @@
 package com.example.SpringGit.entity;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -10,12 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "articolo")
 public class Articolo {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
@@ -30,51 +31,61 @@ public class Articolo {
 	private double iva;
 	@OneToMany(mappedBy = "articolo")
 	private Set<Carrello> carrello;
-	
-	
-	
-	
+
 	public Articolo() {
 		super();
 	}
-	
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getDescrizione() {
 		return descrizione;
 	}
+
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
+
 	public String getCodice() {
 		return codice;
 	}
+
 	public void setCodice(String codice) {
 		this.codice = codice;
 	}
+
 	public double getPrezzo() {
 		return prezzo;
 	}
+
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
+
 	public double getIva() {
 		return iva;
 	}
+
 	public void setIva(double iva) {
 		this.iva = iva;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@OneToMany(mappedBy = "utente")
+	private List<WishList> wishlist;
+
+	@JsonIgnore
+	public List<WishList> getWishlist() {
+		return wishlist;
+	}
+
+	public void setPosts(List<WishList> wishlist) {
+		this.wishlist = wishlist;
+	}
+
 }
