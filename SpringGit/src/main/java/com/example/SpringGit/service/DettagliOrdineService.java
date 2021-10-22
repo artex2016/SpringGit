@@ -25,7 +25,7 @@ public class DettagliOrdineService {
 	private OrdineRepository ordiniRepository;
 
 	@Transactional
-	public void add(int articolo, String ordine) throws Exception {
+	public void add(String ordine,int articolo,int qta) throws Exception {
 		Optional<Articolo> oa = articoliRepository.findById(articolo);
 		if (!oa.isPresent())
 			throw new Exception("KO - Articolo non presente");
@@ -33,6 +33,7 @@ public class DettagliOrdineService {
 		trovaOrdine(d, ordine);
 		d.setArticolo(oa.get());
 		d.setPrezzo(oa.get().getPrezzo());
+		d.setQta(qta);
 		d.setIva(oa.get().getIva());
 
 		dettagliOrdineRepository.save(d);

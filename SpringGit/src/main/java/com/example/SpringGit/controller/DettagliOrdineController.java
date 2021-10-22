@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,10 +23,12 @@ public class DettagliOrdineController {
 	@Autowired
 	private DettagliOrdineService dettagliOrdineService;
 	
-	@PostMapping("/new/{articolo}/{ordine}")
-	public ResponseEntity<String> newDettaglioOrdine(@PathVariable("articolo")int articolo,@PathVariable("ordine")String ordine) {
+	@PostMapping("/new/{ordine}")
+	public ResponseEntity<String> newDettaglioOrdine(@PathVariable("ordine")String ordine,@RequestBody Map<String,String> paramMap) {
 		try {
-			dettagliOrdineService.add(articolo,ordine);
+			int qta=Integer.parseInt(paramMap.get("qta"));
+			int articolo=Integer.parseInt(paramMap.get("articolo"));
+			dettagliOrdineService.add(ordine,articolo,qta);
 			return new ResponseEntity<>("OK - Dettaglio Ordine aggiunto",HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
@@ -33,7 +36,7 @@ public class DettagliOrdineController {
 	}
 	
 	@PutMapping(path="/modify/{dettaglioordine}",consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public ResponseEntity<String> modifyDettaglioOrdine(@PathVariable("dettaglioordine")int dettaglioOrdine,Map<String,String> paramMap){
+	public ResponseEntity<String> modifyDettaglioOrdine(@PathVariable("dettaglioordine")int dettaglioOrdine,@RequestBody Map<String,String> paramMap){
 		try {
 			dettagliOrdineService.modify(dettaglioOrdine, Integer.parseInt(paramMap.get("articolo")), paramMap.get("ordine"), Double.parseDouble(paramMap.get("prezzo")), Double.parseDouble(paramMap.get("iva")),Integer.parseInt(paramMap.get("qta")));
 			return new ResponseEntity<>("OK - DettaglioOrdine modificato",HttpStatus.OK);			
