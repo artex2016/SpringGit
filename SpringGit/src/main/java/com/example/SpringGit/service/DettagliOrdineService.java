@@ -91,7 +91,6 @@ public class DettagliOrdineService {
 
 	private void trovaOrdine(DettaglioOrdine d, String ordine) throws Exception {
 		int id;
-		String numOrdine;
 		Optional<Ordine> oo;
 		try {
 			id = Integer.parseInt(ordine);
