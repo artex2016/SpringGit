@@ -31,14 +31,14 @@ public class OrdineController {
 	}
 
 	// Inserimento post con id utente passato per path
-	@PostMapping(path = "/inserimento/{id}", consumes = { MediaType.ALL_VALUE, MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<String> inserimentoPost(@PathVariable("id") int id, @RequestBody Ordine ordine) {
+	@PostMapping(path = "/inserimento", consumes = { MediaType.ALL_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<String> inserimentoPost(@RequestBody Ordine ordine) {
 
-		System.out.println("\nRichiamato endpoint /api/post/inserimento/" + id);
+		System.out.println("\nRichiamato endpoint /api/post/inserimento");
 
 		try {
 
-			String out = ordineServ.insertOrdine(ordine, id);
+			String out = ordineServ.insertOrdine(ordine);
 			return new ResponseEntity<>(out, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);

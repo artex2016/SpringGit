@@ -46,14 +46,14 @@ public class OrdineService {
 	}
 	
 	@Transactional
-	public String insertOrdine(Ordine ordine, int idUtente)  throws Exception {
+	public String insertOrdine(Ordine ordine)  throws Exception {
 		
 		//TODO: check unicità dati
 		int idOrdine = ordine.getId();
 		if (ordineRepo.findById(idOrdine).isPresent())
 			throw new Exception("BAD - Id ordine già presente.");
 		
-		Optional<Utente> utenteOpt = utenteRepo.findById(idUtente);
+		Optional<Utente> utenteOpt = utenteRepo.findById(ordine.getIdUtente());
 		if(!utenteOpt.isPresent())
 			throw new Exception("BAD - Utente non presente con questo Id.");
 		
